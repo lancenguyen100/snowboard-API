@@ -1,21 +1,5 @@
 # Snowboard API
 
-<!-- A template for starting projects with `express` as an API. Includes
-authentication and common middlewares. -->
-
-<!-- ## Installation
-
-1. [Download](../../archive/master.zip) this template.
-1. Move the .zip file to your `sei/projects/` directory and Unzip it (creating a
-   folder) -- **NOTE:** if the folder was already unzipped, use the `mv` command
-   line to move it to the `sei/projects/` directory.
-1. Rename the directory from express-auth-template -> your-app-name.
-1. Rename [`README.md`](README.md) to `REF.md` and use as a reference, create a new README and fill with your own content.
-1. Move into the new project and `git init`.
-1. Replace all instances of `'express-auth-template'` with your app name.
-1. Install dependencies with `npm install`.
-1. Ensure that you have `nodemon` installed by running `npm install -g nodemon`.
-2. Once everything is working, make an initial commit. -->
 
 ## Structure
 
@@ -28,8 +12,7 @@ follow the pattern established here with `exampleRoutes` and `userRoutes`. If
 you want to add any middlewares to your app, do that here.
 
 The `app` directory contains models and route files. Models are simply Mongoose
-models. To create your own, follow the patterns established in
-`app/models/example.js`. Route files are somewhat similar to controllers in
+models. Route files are somewhat similar to controllers in
 Rails, but they cover more functionality, including serialization and deciding
 which HTTP verbs to accept and what to do with them.
 
@@ -57,15 +40,6 @@ built-in user authentication documentation.
 
 Scripts are included in [`curl-scripts`](curl-scripts) to test built-in actions. Feel free to use Postman for testing, using the curl scripts listed below and in the folder for setting up headers and request bodies.
 Add your own scripts to test your custom API.
-
-<!-- ### Authentication
-
-| Verb   | URI Pattern            | Controller#Action |
-|--------|------------------------|-------------------|
-| POST   | `/sign-up`             | `users#signup`    |
-| POST   | `/sign-in`             | `users#signin`    |
-| PATCH  | `/change-password/` | `users#changepw`  |
-| DELETE | `/sign-out/`        | `users#signout`   | -->
 
 #### POST /sign-up
 
@@ -180,9 +154,9 @@ Response:
 HTTP/1.1 204 No Content
 ```
 
-## Snowboard Routes
+## User Routes
 
-### Snowboard route table
+### User route table
 
 | Verb   | URI Pattern            | Controller#Action |
 |--------|------------------------|-------------------|
@@ -190,3 +164,15 @@ HTTP/1.1 204 No Content
 | POST   | `/sign-in`             | `users#signin`    |
 | PATCH  | `/change-password/` | `users#changepw`  |
 | DELETE | `/sign-out/`        | `users#signout`   |
+
+## Snowboard Routes
+
+### Snowboard route table
+
+| Verb    | URI Pattern                 | Controller#Action      |
+|---------|-----------------------------|------------------------|
+| GET     | `/snowboards`               | `index page`           |
+| GET     | `/snowboards/:id`           | `show page`            |
+| POST    | `/snowboards`               | `create route`         |
+| PATCH   | `/snowboards/:id`           | `update route`         |
+| DELETE  | `/snowboards/:id`           | `delete route`         |
