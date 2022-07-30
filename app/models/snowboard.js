@@ -3,8 +3,10 @@
 
 const mongoose = require('mongoose')
 
+const bootSchema = require ("./boot")
 
 const { Schema, model } = mongoose
+
 
 const snowboardSchema = new Schema(
     {
@@ -24,6 +26,7 @@ const snowboardSchema = new Schema(
             type: Number,
             required: true
         },
+        boots: [bootSchema],
         owner: {
 			type: Schema.Types.ObjectId,
 			ref: 'User'
@@ -42,7 +45,7 @@ const snowboardSchema = new Schema(
 snowboardSchema.virtual('fullTitle').get(function () {
     // in here, we can do whatever javascripty things we want, to make sure we return some value that will be assigned to this virtual
     // fullTitle is going to combine the brand and type to build a title
-    return `${this.brand} the ${this.type}`
+    return `${this.brand} a ${this.type}`
 })
 
 snowboardSchema.virtual('isAShortBoard').get(function () {

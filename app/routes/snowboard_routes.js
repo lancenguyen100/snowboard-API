@@ -33,7 +33,10 @@ router.get('/snowboards', (req, res, next) => {
 	// we want everyone to see the snowboards, whether they're logged in or not.
 	// if we wanted to protect these resources, then we can add that middleware back in(requireToken middleware). and we would place it between the route and the callback function.(second argument)
 	Snowboard.find()
+		// .populate("owner") shows all of owner information
+		.populate("owner")
 		.then((snowboards) => {
+			// console.log("the whole request", req)
 			// `snowboards` will be an array of Mongoose documents
 			// we want to convert each one to a POJO, so we use `.map` to
 			// apply `.toObject` to each one
@@ -52,6 +55,8 @@ router.get('/snowboards/:id', (req, res, next) => {
 	// if we wanted to protect these resources, then we can add that middleware back in(requireToken middleware). and we would place it between the route and the callback function.(second argument)
 	// req.params.id will be set based on the `:id` in the route
 	Snowboard.findById(req.params.id)
+		// .populate("owner") shows all of owner information
+		.populate("owner")
 		.then(handle404)
 		// if `findById` is succesful, respond with 200 and "snowboard" JSON
 		.then((snowboard) => res.status(200).json({ snowboard: snowboard.toObject() }))

@@ -5,6 +5,7 @@ const cors = require('cors')
 
 // require route files
 const snowboardRoutes = require('./app/routes/snowboard_routes')
+const bootRoutes = require('./app/routes/boot_routes')
 const exampleRoutes = require('./app/routes/example_routes')
 const userRoutes = require('./app/routes/user_routes')
 
@@ -66,7 +67,9 @@ app.use(express.urlencoded({ extended: true }))
 app.use(requestLogger)
 
 // register route files
+// MAKE SURE TO RUN SNOWBOARD ROUTES FIRST BEFORE BOOT ROUTES
 app.use(snowboardRoutes)
+app.use(bootRoutes)
 app.use(exampleRoutes)
 app.use(userRoutes)
 
