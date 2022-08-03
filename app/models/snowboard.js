@@ -45,7 +45,7 @@ const snowboardSchema = new Schema(
 snowboardSchema.virtual('fullTitle').get(function () {
     // in here, we can do whatever javascripty things we want, to make sure we return some value that will be assigned to this virtual
     // fullTitle is going to combine the brand and type to build a title
-    return `${this.brand} a ${this.type}`
+    return `${this.brand} - ${this.type}`
 })
 
 snowboardSchema.virtual('isAShortBoard').get(function () {
